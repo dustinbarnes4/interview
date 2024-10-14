@@ -1,0 +1,151 @@
+success: true
+score: 25
+maxPossibleScore: 25
+timestamp: 1612669499678
+tests:
+  counts:
+    failed: 0
+    passed: 27
+    total: 27
+  results:
+    - name: Program Creates help.pl.txt
+      status: passed
+      points: 1
+    - name: "Correctly Fixes Filename: Uses replace()"
+      status: passed
+      points: 1
+    - name: "Correctly Fixes Filename: README-SAMPLE.en.md as argument creates
+        README-SAMPLE.pl.md"
+      status: passed
+      points: 1
+    - name: "Correctly Fixes Filename: .en.env as argument creates .pl.env"
+      status: passed
+      points: 1
+    - name: "capitalize(): capitalize('cat') returns Cat"
+      status: passed
+      points: 1
+    - name: "capitalize(): capitalize('helloWorld') returns Helloworld"
+      status: passed
+      points: 1
+    - name: "capitalize(): capitalize('ALPHABET') returns Alphabet"
+      status: passed
+      points: 1
+    - name: "capitalize(): capitalize('fOoBaRbAzQuUx') returns Foobarbazquux"
+      status: passed
+      points: 1
+    - name: "capitalize(): capitalize('123ABC') returns 123abc"
+      status: passed
+      points: 1
+    - name: "capitalize(): capitalize('lorem') returns Lorem"
+      status: passed
+      points: 1
+    - name: "capitalizePigLatin(): Uses capitalize()"
+      status: passed
+      points: 1
+    - name: "capitalizePigLatin(): Uses nth Found Strings"
+      status: passed
+      points: 1
+    - name: 'capitalizePigLatin(): Contains "ay"'
+      status: passed
+      points: 1
+    - name: "vowelRegex: vowelRegex not just a space"
+      status: passed
+      points: 1
+    - name: "vowelRegex: vowelRegex matches lowercase words starting with vowel"
+      status: passed
+      points: 1
+    - name: "vowelRegex: vowelRegex matches uppercase words starting with vowel"
+      status: passed
+      points: 1
+    - name: "vowelRegex: vowelRegex doesn't match words starting with consonant"
+      status: passed
+      points: 1
+    - name: "lowerCaseConsonantRegex: lowerCaseConsonantRegex not just a space"
+      status: passed
+      points: 1
+    - name: "lowerCaseConsonantRegex: lowerCaseConsonantRegex doesn't match words
+        starting with vowel"
+      status: passed
+      points: 1
+    - name: "lowerCaseConsonantRegex: lowerCaseConsonantRegex doesn't match words
+        starting with uppercase"
+      status: passed
+      points: 1
+    - name: "lowerCaseConsonantRegex: lowerCaseConsonantRegex matches lowercase words
+        starting with a consonant"
+      status: passed
+      points: 1
+    - name: "upperCaseConsonantRegex: upperCaseConsonantRegex not just a space"
+      status: passed
+      points: 1
+    - name: "upperCaseConsonantRegex: upperCaseConsonantRegex doesn't match words
+        starting with vowel"
+      status: passed
+      points: 1
+    - name: "upperCaseConsonantRegex: upperCaseConsonantRegex matches uppercase words
+        starting with a consonant"
+      status: passed
+      points: 1
+    - name: "upperCaseConsonantRegex: upperCaseConsonantRegex doesn't match words
+        starting with lowercase"
+      status: passed
+      points: 1
+    - name: "style checks, failing tests results in docked points: no semi-colons, ya
+        dork"
+      status: passed
+      points: 0
+    - name: "style checks, failing tests results in docked points: no double quotes,
+        ya pile of road apples"
+      status: passed
+      points: 0
+sources:
+  - file: index.js
+    contents: >
+      const fs = require('fs')
+
+
+      const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() // TODO: capitalize first letter in str and lowercase the rest
+
+      // example: cat becomes Cat, helloKitty becomes Hellokitty.
+
+
+      const capitalizePigLatin = ($0, $1, $2, $3) => capitalize(`${$3+$1+$2}ay`) // TODO: complete replacer function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_function_as_a_parameter
+
+
+      const vowelRegex = /\b([aeiou][a-z]+)/gi // TODO: regEx, don't forget the flags
+
+      const lowerCaseConsonantRegex = /\b([bcdfghjklmnpqrstvwxyz][bcdfghjklmnpqrstvwxyz]{0,1})([a-z]+)/g // TODO: regEx, don't forget the flags
+
+      const upperCaseConsonantRegex = /\b([BCDFGHJKLMNPQRSTVWXYZ])([bcdfghjklmnpqrstvwxyz]{0,1})([a-z]+)/g // TODO: regEx, don't forget the flags
+
+
+      function main() {
+        const args = process.argv.slice(2)
+        const [textIn] = args
+
+        const textOut = textIn.replace(/en/, 'pl') // TODO: get a new filename by replacing .en. to .pl.
+        // example: help.en.txt becomes help.pl.txt, or readme.en.md becomes readme.pl.md
+        const originalText = fs.readFileSync(textIn, 'utf-8')
+
+        const pigLatinText = originalText
+          .replace(vowelRegex, '$1ay') // TODO: regEx replacement string
+          .replace(lowerCaseConsonantRegex, '$2$1ay') // TODO: regEx replacement string
+          .replace(upperCaseConsonantRegex, capitalizePigLatin)
+
+        fs.writeFileSync(textOut, pigLatinText)
+      }
+
+
+      // DO NOT touch anything below this line!!!
+
+
+      module.exports = {
+        capitalize,
+        capitalizePigLatin,
+        vowelRegex,
+        lowerCaseConsonantRegex,
+        upperCaseConsonantRegex
+      }
+
+
+      if (require.main === module) main()

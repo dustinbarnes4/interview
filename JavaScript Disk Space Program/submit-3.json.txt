@@ -1,0 +1,231 @@
+{
+  "success": true,
+  "score": 21,
+  "maxPossibleScore": 21,
+  "timestamp": 1612572605359,
+  "tests": {
+    "counts": {
+      "failed": 0,
+      "passed": 42,
+      "total": 42
+    },
+    "results": [
+      {
+        "name": ": index.js Exists",
+        "status": "passed",
+        "points": 1
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\": Contains Correct Number of Arrays",
+        "status": "passed",
+        "points": 1
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 0 letter words contains 0 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 1 letter words contains 0 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 2 letter words contains 0 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 3 letter words contains 0 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 4 letter words contains 2544 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 5 letter words contains 5117 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 6 letter words contains 8297 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 7 letter words contains 11569 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 8 letter words contains 12678 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 9 letter words contains 11761 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 10 letter words contains 9890 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 11 letter words contains 7358 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 12 letter words contains 5065 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 13 letter words contains 3036 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 14 letter words contains 1690 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 15 letter words contains 945 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 16 letter words contains 450 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 17 letter words contains 233 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 18 letter words contains 83 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 19 letter words contains 43 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Arrays Contain Correct Number of Words: 20 letter words contains 9 words",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 4 letter words at index 2173 is {\"word\":\"team\",\"letters\":{\"t\":1,\"e\":1,\"a\":1,\"m\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 5 letter words at index 86 is {\"word\":\"algae\",\"letters\":{\"a\":2,\"l\":1,\"g\":1,\"e\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 6 letter words at index 6498 is {\"word\":\"shunts\",\"letters\":{\"s\":2,\"h\":1,\"u\":1,\"n\":1,\"t\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 7 letter words at index 6273 is {\"word\":\"mingles\",\"letters\":{\"m\":1,\"i\":1,\"n\":1,\"g\":1,\"l\":1,\"e\":1,\"s\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 8 letter words at index 2552 is {\"word\":\"crawlies\",\"letters\":{\"c\":1,\"r\":1,\"a\":1,\"w\":1,\"l\":1,\"i\":1,\"e\":1,\"s\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 9 letter words at index 4962 is {\"word\":\"homestead\",\"letters\":{\"h\":1,\"o\":1,\"m\":1,\"e\":2,\"s\":1,\"t\":1,\"a\":1,\"d\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 10 letter words at index 2167 is {\"word\":\"deactivate\",\"letters\":{\"d\":1,\"e\":2,\"a\":2,\"c\":1,\"t\":2,\"i\":1,\"v\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 11 letter words at index 5863 is {\"word\":\"sauerkrauts\",\"letters\":{\"s\":2,\"a\":2,\"u\":2,\"e\":1,\"r\":2,\"k\":1,\"t\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 12 letter words at index 1808 is {\"word\":\"flatteringly\",\"letters\":{\"f\":1,\"l\":2,\"a\":1,\"t\":2,\"e\":1,\"r\":1,\"i\":1,\"n\":1,\"g\":1,\"y\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 13 letter words at index 597 is {\"word\":\"criminologist\",\"letters\":{\"c\":1,\"r\":1,\"i\":3,\"m\":1,\"n\":1,\"o\":2,\"l\":1,\"g\":1,\"s\":1,\"t\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 14 letter words at index 892 is {\"word\":\"molecularities\",\"letters\":{\"m\":1,\"o\":1,\"l\":2,\"e\":2,\"c\":1,\"u\":1,\"a\":1,\"r\":1,\"i\":2,\"t\":1,\"s\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 15 letter words at index 105 is {\"word\":\"colorfastnesses\",\"letters\":{\"c\":1,\"o\":2,\"l\":1,\"r\":1,\"f\":1,\"a\":1,\"s\":4,\"t\":1,\"n\":1,\"e\":2}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 16 letter words at index 389 is {\"word\":\"superintendences\",\"letters\":{\"s\":2,\"u\":1,\"p\":1,\"e\":4,\"r\":1,\"i\":1,\"n\":3,\"t\":1,\"d\":1,\"c\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 17 letter words at index 168 is {\"word\":\"opportunistically\",\"letters\":{\"o\":2,\"p\":2,\"r\":1,\"t\":2,\"u\":1,\"n\":1,\"i\":2,\"s\":1,\"c\":1,\"a\":1,\"l\":2,\"y\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 18 letter words at index 41 is {\"word\":\"individualizations\",\"letters\":{\"i\":5,\"n\":2,\"d\":2,\"v\":1,\"u\":1,\"a\":2,\"l\":1,\"z\":1,\"t\":1,\"o\":1,\"s\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 19 letter words at index 2 is {\"word\":\"argumentativenesses\",\"letters\":{\"a\":2,\"r\":1,\"g\":1,\"u\":1,\"m\":1,\"e\":4,\"n\":2,\"t\":2,\"i\":1,\"v\":1,\"s\":3}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "Lab Output \"wordLetterCounts.json\" > Sample Word Checks: 20 letter words at index 3 is {\"word\":\"departmentalizations\",\"letters\":{\"d\":1,\"e\":2,\"p\":1,\"a\":3,\"r\":1,\"t\":3,\"m\":1,\"n\":2,\"l\":1,\"i\":2,\"z\":1,\"o\":1,\"s\":1}}",
+        "status": "passed",
+        "points": 0.5
+      },
+      {
+        "name": "style checks, failing tests results in docked points: no semi-colons, ya dork",
+        "status": "passed",
+        "points": 0
+      },
+      {
+        "name": "style checks, failing tests results in docked points: no double quotes, ya pile of road apples",
+        "status": "passed",
+        "points": 0
+      }
+    ]
+  },
+  "sources": [
+    {
+      "file": "index.js",
+      "contents": "const words = require('./words.json')\r\nconst counter = require('./counter.js')\r\nconst fs = require('fs')\r\n\r\nconst toJson = (obj) => JSON.stringify(obj, null, 2)\r\n\r\nfunction writeJson(obj, filename) {\r\n    fs.writeFileSync(filename, toJson(obj))\r\n}\r\n\r\nfunction letterCounts(letters) {\r\n    const letterCounter = counter()\r\n    letters.forEach(letter => letterCounter.count(letter))\r\n    return letterCounter.getCounts()\r\n}\r\n\r\nconst returnArr = []\r\nfor (arr of words) {\r\n    const wordObjectArr = []\r\n    arr.forEach(str => {\r\n        const letterArray = [...str]\r\n        replacementObject = {\r\n            word: str,\r\n            letters: letterCounts(letterArray)\r\n        }\r\n        wordObjectArr.push(replacementObject)\r\n    })\r\n    returnArr.push(wordObjectArr)\r\n}\r\n\r\nwriteJson(returnArr, 'wordLetterCounts.json')"
+    }
+  ]
+}

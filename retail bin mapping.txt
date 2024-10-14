@@ -1,0 +1,344 @@
+
+class Garment():
+    """Specific to this HashMaps use, this object
+    named garment is a data type with a key holding a garments Deseret Book SKU and value
+    that is a tuple with that garments information. Represents a data item within the hashmap."""
+    def __init__(self, key, value):
+        """Initializes a new garment sku, where the key for the hashmap
+        is the garments Deseret Book SKU."""
+        self.key = int(key)
+        self.value = value
+        self.style = value[1]
+        self.gtype = value[0]
+        self.dsd_sku = value[2]
+        self.units_sold = value[3]
+
+    def __str__(self):
+        """Returns a string in the form of a tuple for the
+        key and value of the word object."""
+        return "(" + self.key +", " + str(self.style) + ", Units Sold: " + str(self.units_sold) + ")"
+
+class HashMap():
+    """HashMap data structure."""
+    def __init__(self):
+        """Initializes HashMap with 8 slots and a size of 0."""
+        self.hash_table = [None] * 8
+        self.hash_size = 0
+
+        self.mens_tops_dict = {'100% Cotton':[], 'Corban':[], 'Cotton Poly':[], 'Drilux':[], 'Military':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+        self.mens_bottoms_dict = {'100% Cotton':[], 'Corban':[], 'Cotton Poly':[], 'Drilux':[], 'Military':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+
+        self.womens_tops_dict = {'100% Cotton':[], 'Carinessa':[], 'Cotton Poly':[], 'Drisilque':[], 'Maternity':[], 'Nursing':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+        self.womens_bottoms_dict = {'100% Cotton':[], 'Carinessa':[], 'Cotton Poly':[], 'Drisilque':[], 'Maternity':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+
+        self.units_sold_dict = {"Total Units Sold":0, "Mens Units Sold":0, "Womens Units Sold":0}
+
+        self.mens_tops_units_sold = {"Total Mens Tops Sold":0, '100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.mens_bottoms_units_sold = {"Total Mens Bottoms Sold":0, '100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+        self.womens_tops_units_sold = {'Total Womens Tops Sold':0, '100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nursing':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.womens_bottoms_units_sold = {'Total Womens Bottoms Sold':0, '100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+        self.mens_tops_percentage_sold = {'100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.mens_bottoms_percentage_sold = {'100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        
+        self.womens_tops_percentage_sold = {'100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nursing':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.womens_bottoms_percentage_sold = {'100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+
+    def hash_function(self, key):
+        """Hash's an int to find index for hash_table"""
+        
+        return int(key) % self.capacity()
+
+    def get(self, key, default=None):
+        """Returns the value of a key if it is in the HashMap,
+        if it is not, it will return None."""
+        index = self.hash_function(key)
+        if self.hash_table[index] is None: #pylint: disable=R1705
+            return default
+        elif self.hash_table[index].key == key:
+            return self.hash_table[index].value
+        else:
+            original_index = index
+            while self.hash_table[index] is not None:
+                if self.hash_table[index].key == key:
+                    return self.hash_table[index].value
+                index = (index + 1) % self.capacity()
+                if index == original_index:
+                    break
+            return default
+
+    def set(self, key, value=1):
+        """Puts a key and value into the Hashmap, if the value is not
+        provided it defaults at one. Also checks to see if the key is
+        already in the HashMap and if it is it will increment its value
+        by one unless a new value is given by the user."""
+        if self.get(key) is None:
+            index = self.hash_function(key)
+            if self.hash_table[index] is None:
+                self.hash_table[index] = Garment(key, value)
+                self.hash_size += 1
+                
+                self.garment_sort(key, value)
+
+            else:
+                while self.hash_table[index] is not None:
+                    index = (index + 1) % self.capacity()
+                self.hash_table[index] = Garment(key, value)
+                self.hash_size += 1
+                
+                self.garment_sort(key, value)
+        else:
+            index = self.hash_function(key)
+            while True:
+                if self.hash_table[index].key == key:
+                    if value != 1:
+                        self.hash_table[index].value = value
+                    else:
+                        raise ValueError("Garment sku missing data")
+                    break
+                index = (index + 1) % self.capacity()
+        if self.size()/self.capacity() >= 0.8:
+            self.rehash()
+
+    def clear(self):
+        """Resets the HashMap with 8 slots."""
+        self.hash_table = [None] * 8
+        self.hash_size = 0
+
+        self.mens_tops_dict = {'100% Cotton':[], 'Corban':[], 'Cotton Poly':[], 'Drilux':[], 'Military':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+        self.mens_bottoms_dict = {'100% Cotton':[], 'Corban':[], 'Cotton Poly':[], 'Drilux':[], 'Military':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+
+        self.womens_tops_dict = {'100% Cotton':[], 'Carinessa':[], 'Cotton Poly':[], 'Drisilque':[], 'Maternity':[], 'Nursing':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+        self.womens_bottoms_dict = {'100% Cotton':[], 'Carinessa':[], 'Cotton Poly':[], 'Drisilque':[], 'Maternity':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+
+        self.units_sold_dict = {"Total Units Sold":0, "Mens Units Sold":0, "Womens Units Sold":0}
+
+        self.mens_tops_units_sold = {"Total Mens Tops Sold":0, '100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.mens_bottoms_units_sold = {"Total Mens Bottoms Sold":0, '100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+        self.womens_tops_units_sold = {'Total Womens Tops Sold':0, '100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nursing':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.womens_bottoms_units_sold = {'Total Womens Bottoms Sold':0, '100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+    def capacity(self):
+        """Returns the total number of buckets
+        in the HashMap."""
+        return len(self.hash_table)
+
+    def size(self):
+        """Returns the number of filled buckets."""
+        return self.hash_size
+
+    def keys(self):
+        """Returns a list of Keys in the HashMap."""
+        keys_list = []
+        for item in self.hash_table:
+            if item is not None:
+                keys_list.append(item.key)
+        return keys_list
+
+    def values(self):
+        """Returns a list of Values in the HashMap."""
+        values_list = []
+        for item in self.hash_table:
+            if item is not None:
+                values_list.append(item.value)
+        return values_list
+
+    def sort_by_value(self):
+        """Returns a sorted list of (key, value) tuples
+        that are sorted by the value."""
+        keys_values_list = []
+        for item in self.hash_table:
+            if item is not None:
+                keys_values_list.append((item.key, item.value))
+        sorted_list = sorted(keys_values_list, key=lambda x: x[1], reverse=True)
+        return sorted_list
+
+    def rehash(self):
+        """Rehashes the HashTable by doubling its size
+        and then replacing all of the items into their new
+        spot that has been recalculated."""
+        old_table = self.hash_table
+
+        
+        self.hash_size = 0
+
+        self.mens_tops_dict = {'100% Cotton':[], 'Corban':[], 'Cotton Poly':[], 'Drilux':[], 'Military':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+        self.mens_bottoms_dict = {'100% Cotton':[], 'Corban':[], 'Cotton Poly':[], 'Drilux':[], 'Military':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+
+        self.womens_tops_dict = {'100% Cotton':[], 'Carinessa':[], 'Cotton Poly':[], 'Drisilque':[], 'Maternity':[], 'Nursing':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+        self.womens_bottoms_dict = {'100% Cotton':[], 'Carinessa':[], 'Cotton Poly':[], 'Drisilque':[], 'Maternity':[], 'Nylon Mesh':[], 'Stretch Cotton':[]}
+
+        self.units_sold_dict = {"Total Units Sold":0, "Mens Units Sold":0, "Womens Units Sold":0}
+
+        self.mens_tops_units_sold = {"Total Mens Tops Sold":0, '100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.mens_bottoms_units_sold = {"Total Mens Bottoms Sold":0, '100% Cotton':0, 'Corban':0, 'Cotton Poly':0, 'Drilux':0, 'Military':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+        self.womens_tops_units_sold = {'Total Womens Tops Sold':0, '100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nursing':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+        self.womens_bottoms_units_sold = {'Total Womens Bottoms Sold':0, '100% Cotton':0, 'Carinessa':0, 'Cotton Poly':0, 'Drisilque':0, 'Maternity':0, 'Nylon Mesh':0, 'Stretch Cotton':0}
+
+        self.hash_table = [None] * (2 * self.capacity())
+        for item in old_table:
+            if item is not None:
+                self.set(item.key, item.value)
+
+    def garment_sort(self, key, value):
+
+        self.units_sold_dict['Total Units Sold'] += value[3]
+
+        if value[0][0] == 'M':
+            self.units_sold_dict["Mens Units Sold"] += value[3]
+            if 'MILITARY' in value[1]:
+                if value[0] == "Mens Tops":
+                    self.mens_tops_dict["Military"].append(key)
+                    self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                    self.mens_tops_units_sold['Military'] += value[3]
+                if value[0] == "Mens Bottoms":
+                    self.mens_bottoms_dict["Military"].append(key)
+                    self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                    self.mens_bottoms_units_sold['Military'] += value[3]
+            else:
+                if 'STRETCH' in value[1]:
+                    if value[0] == "Mens Tops":
+                        self.mens_tops_dict["Stretch Cotton"].append(key)
+                        self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                        self.mens_tops_units_sold['Stretch Cotton'] += value[3]
+                    if value[0] == "Mens Bottoms":
+                        self.mens_bottoms_dict["Stretch Cotton"].append(key)
+                        self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                        self.mens_bottoms_units_sold['Stretch Cotton'] += value[3]
+                elif 'POLY' in value[1]:
+                    if value[0] == "Mens Tops":
+                        self.mens_tops_dict["Cotton Poly"].append(key)
+                        self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                        self.mens_tops_units_sold['Cotton Poly'] += value[3]
+                    if value[0] == "Mens Bottoms":
+                        self.mens_bottoms_dict["Cotton Poly"].append(key)
+                        self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                        self.mens_bottoms_units_sold['Cotton Poly'] += value[3]
+                elif '100%' in value[1]:
+                    if value[0] == "Mens Tops":
+                        self.mens_tops_dict["100% Cotton"].append(key)
+                        self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                        self.mens_tops_units_sold['100% Cotton'] += value[3]
+                    if value[0] == "Mens Bottoms":
+                        self.mens_bottoms_dict["100% Cotton"].append(key)
+                        self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                        self.mens_bottoms_units_sold['100% Cotton'] += value[3]
+                elif 'LUX' in value[1]:
+                    if value[0] == "Mens Tops":
+                        self.mens_tops_dict["Drilux"].append(key)
+                        self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                        self.mens_tops_units_sold['Drilux'] += value[3]
+                    if value[0] == "Mens Bottoms":
+                        self.mens_bottoms_dict["Drilux"].append(key)
+                        self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                        self.mens_bottoms_units_sold['Drilux'] += value[3]
+                elif 'NYLON' in value[1]:
+                    if value[0] == "Mens Tops":
+                        self.mens_tops_dict["Nylon Mesh"].append(key)
+                        self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                        self.mens_tops_units_sold['Nylon Mesh'] += value[3]
+                    if value[0] == "Mens Bottoms":
+                        self.mens_bottoms_dict["Nylon Mesh"].append(key)
+                        self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                        self.mens_bottoms_units_sold['Nylon Mesh'] += value[3]
+                elif 'CORBAN' in value[1]:
+                    if value[0] == "Mens Tops":
+                        self.mens_tops_dict["Corban"].append(key)
+                        self.mens_tops_units_sold["Total Mens Tops Sold"] += value[3]
+                        self.mens_tops_units_sold['Corban'] += value[3]
+                    if value[0] == "Mens Bottoms":
+                        self.mens_bottoms_dict["Corban"].append(key)
+                        self.mens_bottoms_units_sold["Total Mens Bottoms Sold"] += value[3]
+                        self.mens_bottoms_units_sold['Corban'] += value[3]
+            
+            
+        if value[0][0] == 'W':
+            self.units_sold_dict["Womens Units Sold"] += value[3]
+            if 'MAT' in value[1]:
+                if value[0] == 'Womens Tops':
+                    self.womens_tops_dict["Maternity"].append(key)
+                    self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                    self.womens_tops_units_sold["Maternity"] += value[3]
+                if value[0] == 'Womens Bottoms':
+                    self.womens_bottoms_dict["Maternity"].append(key)
+                    self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                    self.womens_bottoms_units_sold["Maternity"] += value[3]
+            elif 'NR' in value[1]:
+                if value[0] == 'Womens Tops':
+                    self.womens_tops_dict["Nursing"].append(key)
+                    self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                    self.womens_tops_units_sold["Nursing"] += value[3]
+
+            else:
+                if 'STRETCH' in value[1]:
+                    if value[0] == "Womens Tops":
+                        self.womens_tops_dict["Stretch Cotton"].append(key)
+                        self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                        self.womens_tops_units_sold['Stretch Cotton'] += value[3]
+                    if value[0] == "Womens Bottoms":
+                        self.womens_bottoms_dict["Stretch Cotton"].append(key)
+                        self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                        self.womens_bottoms_units_sold['Stretch Cotton'] += value[3]
+                if 'CARINESSA' in value[1]:
+                    if value[0] == "Womens Tops":
+                        self.womens_tops_dict["Carinessa"].append(key)
+                        self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                        self.womens_tops_units_sold['Carinessa'] += value[3]
+                    if value[0] == "Womens Bottoms":
+                        self.womens_bottoms_dict["Carinessa"].append(key)
+                        self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                        self.womens_bottoms_units_sold['Carinessa'] += value[3]
+                elif 'POLY' in value[1]:
+                    if value[0] == "Womens Tops":
+                        self.womens_tops_dict["Cotton Poly"].append(key)
+                        self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                        self.womens_tops_units_sold['Cotton Poly'] += value[3]
+                    if value[0] == "Womens Bottoms":
+                        self.womens_bottoms_dict["Cotton Poly"].append(key)
+                        self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                        self.womens_bottoms_units_sold['Cotton Poly'] += value[3]
+                elif '100%' in value[1]:
+                    if value[0] == "Womens Tops":
+                        self.womens_tops_dict["100% Cotton"].append(key)
+                        self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                        self.womens_tops_units_sold['100% Cotton'] += value[3]
+                    if value[0] == "Womens Bottoms":
+                        self.womens_bottoms_dict["100% Cotton"].append(key)
+                        self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                        self.womens_bottoms_units_sold['100% Cotton'] += value[3]
+                elif 'SILQUE' in value[1]:
+                    if value[0] == "Womens Tops":
+                        self.womens_tops_dict["Drisilque"].append(key)
+                        self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                        self.womens_tops_units_sold['Drisilque'] += value[3]
+                    if value[0] == "Womens Bottoms":
+                        self.womens_bottoms_dict["Drisilque"].append(key)
+                        self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                        self.womens_bottoms_units_sold['Drisilque'] += value[3]
+                elif 'NYLON' in value[1]:
+                    if value[0] == "Womens Tops":
+                        self.womens_tops_dict["Nylon Mesh"].append(key)
+                        self.womens_tops_units_sold["Total Womens Tops Sold"] += value[3]
+                        self.womens_tops_units_sold['Nylon Mesh'] += value[3]
+                    if value[0] == "Womens Bottoms":
+                        self.womens_bottoms_dict["Nylon Mesh"].append(key)
+                        self.womens_bottoms_units_sold["Total Womens Bottoms Sold"] += value[3]
+                        self.womens_bottoms_units_sold['Nylon Mesh'] += value[3]
+    def percentage_sold(self):
+        for item in self.mens_tops_percentage_sold:
+            self.mens_tops_percentage_sold[item] = self.mens_tops_units_sold[item] / self.units_sold_dict['Total Units Sold']
+        for item in self.mens_bottoms_percentage_sold:
+            self.mens_bottoms_percentage_sold[item] = self.mens_bottoms_units_sold[item] / self.units_sold_dict['Total Units Sold']
+
+        for item in self.womens_tops_percentage_sold:
+            self.womens_tops_percentage_sold[item] = self.womens_tops_units_sold[item] / self.units_sold_dict['Total Units Sold']
+        for item in self.womens_bottoms_percentage_sold:
+            self.womens_bottoms_percentage_sold[item] = self.womens_bottoms_units_sold[item] / self.units_sold_dict['Total Units Sold']
+
+    def section_sort(self, section):
+        """used to sort a section based on how it would be laid out on the floor"""
+        pass

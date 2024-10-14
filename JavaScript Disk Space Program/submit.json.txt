@@ -1,0 +1,67 @@
+{
+  "success": false,
+  "testCounts": {
+    "failed": 3,
+    "passed": 11,
+    "total": 14
+  },
+  "timestamp": 1611298449593,
+  "testResults": [
+    {
+      "name": "foobar() renamed: foobar() renamed to toJSON()",
+      "status": "passed"
+    },
+    {
+      "name": "readCSV(): uses array destructuring",
+      "status": "passed"
+    },
+    {
+      "name": "readCSV(): uses fs.readFileSync",
+      "status": "passed"
+    },
+    {
+      "name": "readCSV(): result is a string",
+      "status": "passed"
+    },
+    {
+      "name": "readCSV(): result to be file contents",
+      "status": "passed"
+    },
+    {
+      "name": "parseCSV(): result is an array",
+      "status": "passed"
+    },
+    {
+      "name": "parseCSV(): results are objects",
+      "status": "passed"
+    },
+    {
+      "name": "parseCSV(): results have null in place of empty strings",
+      "status": "passed"
+    },
+    {
+      "name": "parseCSV(): contains 'null' in place of empty strings",
+      "status": "passed"
+    },
+    {
+      "name": "writeJSON(): uses renamed function",
+      "status": "passed"
+    },
+    {
+      "name": "writeJSON(): creates a file",
+      "status": "passed"
+    },
+    {
+      "name": "writeCSV(): creates products.csv",
+      "status": "failed"
+    },
+    {
+      "name": "writeCSV(): contains header",
+      "status": "failed"
+    },
+    {
+      "name": "writeCSV(): contains 'null' in place of empty strings",
+      "status": "failed"
+    }
+  ]
+}

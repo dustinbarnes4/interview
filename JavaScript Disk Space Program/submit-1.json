@@ -1,0 +1,131 @@
+{
+  "success": true,
+  "testCounts": {
+    "failed": 0,
+    "passed": 30,
+    "total": 30
+  },
+  "timestamp": 1610515022949,
+  "testResults": [
+    {
+      "name": "Printing Arguments > printForIArgs(): default args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > printForIArgs(): multiple args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > printForIArgs(): random args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > printForImportantArgs(): default args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > printForImportantArgs(): multiple args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > printForImportantArgs(): random args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > Stripped Printing > stripArgs(): default args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > Stripped Printing > stripArgs(): multiple args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > Stripped Printing > stripArgs(): random args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > Stripped Printing > printForOfArgs(): default args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > Stripped Printing > printForOfArgs(): multiple args",
+      "status": "passed"
+    },
+    {
+      "name": "Printing Arguments > Stripped Printing > printForOfArgs(): random args",
+      "status": "passed"
+    },
+    {
+      "name": "mapArgsToNumbers(): same numbers",
+      "status": "passed"
+    },
+    {
+      "name": "mapArgsToNumbers(): incrementing numbers",
+      "status": "passed"
+    },
+    {
+      "name": "mapArgsToNumbers(): random numbers",
+      "status": "passed"
+    },
+    {
+      "name": "Syntax Checks: printForIArgs()",
+      "status": "passed"
+    },
+    {
+      "name": "Syntax Checks: printForImportantArgs()",
+      "status": "passed"
+    },
+    {
+      "name": "Syntax Checks: stripArgs()",
+      "status": "passed"
+    },
+    {
+      "name": "Syntax Checks: printForOfArgs()",
+      "status": "passed"
+    },
+    {
+      "name": "Syntax Checks: mapArgsToNumbers()",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q0",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q1",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q2",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q3",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q4",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q5",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q6",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > syllabusQuiz(): q7",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > argsAndParamsQuiz(): q8",
+      "status": "passed"
+    },
+    {
+      "name": "Quizzes > argsAndParamsQuiz(): q9",
+      "status": "passed"
+    }
+  ]
+}

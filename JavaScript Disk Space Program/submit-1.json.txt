@@ -1,0 +1,56 @@
+{
+  "success": true,
+  "points": 22,
+  "testCounts": {
+    "failed": 0,
+    "passed": 11,
+    "total": 11
+  },
+  "timestamp": 1612473021955,
+  "testResults": [
+    {
+      "name": "breedCounts(): has variable named breedCounter",
+      "status": "passed"
+    },
+    {
+      "name": "breedCounts(): uses a for...of loop",
+      "status": "passed"
+    },
+    {
+      "name": "breedCounts(): has correct counts",
+      "status": "passed"
+    },
+    {
+      "name": "letterCounts(): has variable named letterCounter",
+      "status": "passed"
+    },
+    {
+      "name": "letterCounts(): uses forEach()",
+      "status": "passed"
+    },
+    {
+      "name": "letterCounts(): contains an arrow function",
+      "status": "passed"
+    },
+    {
+      "name": "letterCounts(): has correct counts",
+      "status": "passed"
+    },
+    {
+      "name": "wordCounts(): has variable named wordCounter",
+      "status": "passed"
+    },
+    {
+      "name": "wordCounts(): has correct counts",
+      "status": "passed"
+    },
+    {
+      "name": "style checks: no semi-colons, ya dork",
+      "status": "passed"
+    },
+    {
+      "name": "style checks: no double quotes, ya pile of ...",
+      "status": "passed"
+    }
+  ]
+}
